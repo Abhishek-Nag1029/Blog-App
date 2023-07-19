@@ -13,9 +13,9 @@ export default function Post({post}) {
       
       <div className="postInfo">
         <div className="postCats">
-            {post.categories.map((c)=>(
+            {post?.categories?.map((c)=>(
               <span className="postCat"> <Link className="link" to="/posts?cat=Music">
-              {c.name}
+              {c?.name}
             </Link></span>
             ))}
         </div>
