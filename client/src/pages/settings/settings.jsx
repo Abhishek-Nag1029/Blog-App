@@ -11,7 +11,7 @@ export default function Settings() {
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const { user ,dispatch} = useContext(Context);
-const PF="http://localhost:5000/images/"
+const PF="https://blog-app-eight-nu.vercel.app/images/"
 
   const handleSubmit = async (e) => {
     dispatch({type:"UPDATE_START"});

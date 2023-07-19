@@ -13,7 +13,7 @@ const handleSubmit= async(e)=>{
 e.preventDefault();
 setError(false);
 try{
-    const res=await axios.post("http://localhost:5000/api/auth/register",{
+    const res=await axios.post("https://blog-app-eight-nu.vercel.app/api/auth/register",{
         username,
         email,
         password,
