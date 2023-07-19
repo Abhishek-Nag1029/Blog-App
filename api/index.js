@@ -12,7 +12,7 @@ const cors=require("cors");
 
 app.use(cors(
   {
-    origin:"http://localhost:3000",
+    origin:["http://localhost:3000","https://blog-chi-three-26.vercel.app"]
   }
 ))
 
