@@ -10,14 +10,14 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import app from "../../Firebase.js";
+import userRequest from "../../requestMethod";
 
 export default function Settings() {
   const { user, dispatch } = useContext(Context);
-  console.log("user",user)
+  console.log("user", user)
   const [file, setFile] = useState(null);
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
-  const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -53,12 +53,11 @@ export default function Settings() {
             userId: user._id,
             username,
             email,
-            password,
             profilePic: downloadURL
           };
           console.log("updatedUser", updatedUser);
           try {
-            const res = await axios.put(process.env.REACT_APP_BACKEND_URI + "/users/" + user._id,updatedUser);
+            const res = await userRequest.put(process.env.REACT_APP_BACKEND_URI + "/users/" + user._id, updatedUser);
             console.log(res.data);
             setSuccess(true);
             dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
@@ -101,8 +100,6 @@ export default function Settings() {
           />
           <label>Email</label>
           <input type="email" placeholder={user.email} value={email} onChange={e => setEmail(e.target.value)} />
-          <label>Password</label>
-          <input type="password" onChange={e => setPassword(e.target.value)} />
           <button className="settingsSubmit" type="submit">Update</button>
           {success && <span style={{ color: "green", textAlign: "center", marginTop: "20px" }}>Profile has been updated successfully...</span>}
         </form>

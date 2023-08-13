@@ -9,6 +9,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import app from "../../Firebase.js";
+import userRequest from "../../requestMethod";
 
 export default function Write() {
   const [title, setTitle] = useState("");
@@ -52,7 +53,7 @@ export default function Write() {
           }
           console.log(newPost);
           try {
-              const res = await axios.post("/posts", newPost);
+              const res = await userRequest.post("/posts", newPost);
               console.log(res.data);
               window.location.replace("/post/" + res.data._id);
             } catch (err) {
