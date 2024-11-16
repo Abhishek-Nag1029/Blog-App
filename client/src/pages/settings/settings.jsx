@@ -75,7 +75,7 @@ export default function Settings() {
       <div className="settingsWrapper">
         <div className="settingsTitle">
           <span className="settingsUpdateTitle">Update Your Account</span>
-          <span className="settingsDeleteTitle">Delete Account</span>
+          {/* <span className="settingsDeleteTitle">Delete Account</span> */}
         </div>
         <form className="settingsForm" onSubmit={handleSubmit}>
           <label>Profile Picture</label>
@@ -89,13 +89,13 @@ export default function Settings() {
             <input type="file"
               id="fileInput"
               style={{ display: "none" }}
-              onChange={(e) => setFile(e.target.files[0])}
+              onChange={(e) => setFile(e.target.files[0])}  // It allows for a custom-designed interface, where the file upload button is not just a plain button but can be an icon, image, or any other UI element.
             />
           </div>
           <label>Username</label>
           <input type="text"
             placeholder={user.username}
-            value={username}
+            value={username}  
             onChange={e => setUsername(e.target.value)}
           />
           <label>Email</label>

@@ -18,6 +18,7 @@ export default function Write() {
   const { user } = useContext(Context);
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
     const filName = new Date().getTime() + file.name;
     const storage = getStorage(app);

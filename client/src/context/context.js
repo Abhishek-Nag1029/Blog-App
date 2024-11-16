@@ -6,21 +6,23 @@ const INITIAL_STATE={
     isFetching:false,
     error:false,
 };
-export const Context=createContext(INITIAL_STATE);
+export const Context=createContext(INITIAL_STATE); //here the global state is saved
+
+
 export const ContextProvider=({children})=>{
-const [state,dispatch]=useReducer(Reducer,INITIAL_STATE);
+const [state,dispatch]=useReducer(Reducer,INITIAL_STATE);  
 
 useEffect(()=>{
     localStorage.setItem("user",JSON.stringify(state.user));
-},[state.user]);
+},[state.user]); 
 return(
-    <Context.Provider
+    <Context.Provider // value are those object which we give access to the childrens
      value={{
         user:state.user,
         isFetching:state.isFetching,
          error:state.error,
          dispatch,
-    }}>
+    }}>  
    
 {children}
     </Context.Provider>

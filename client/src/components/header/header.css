@@ -16,11 +16,14 @@
 .headerTitleLg{
     position: absolute;
     top: 20%;
-    font-size: 100px;
+    color:#8b474d;
+    font-size: 78px;
+    margin:-43px;
 }
 .headerImg{
     width: 100%;
     height:450px;
-    margin-top: 80px;
-    object-fit: cover;
+    margin-top: 45px;
+    /* object-fit: cover; */
+    /* justify-content: center; */
 }

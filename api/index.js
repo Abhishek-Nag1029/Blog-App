@@ -8,23 +8,24 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
-const cors=require("cors");
+const cors = require("cors");
 
-app.use(cors(
-  {
-    origin:["http://localhost:3000","https://blog-chi-three-26.vercel.app"]
-  }
-))
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://blog-chi-three-26.vercel.app",
+    ],
+  })
+);
 
 dotenv.config();
 app.use(express.json());
 
-app.use("/images", express.static(path.join(__dirname,"/images")));
-
-
+app.use("/images", express.static(path.join(__dirname, "/images")));
 
 mongoose
-  .connect(process.env.MONGO_URL, {  
+  .connect(process.env.MONGO_URL, {
     family: 4,
   })
   .then(console.log("Connected to MongoDB"))
@@ -43,7 +44,9 @@ mongoose
 // app.post("/api/upload", upload.single("file"), (req, res) => {
 //   res.status(200).json("File has been uploaded");
 // });
-
+app.get("/test", (req, res) => {
+  res.send("Test endpoint is working");
+});
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
@@ -51,6 +54,6 @@ app.use("/api/categories", categoryRoute);
 // var cors = require('cors');
 // app.use(cors({origin: true, credentials: true}));
 
-app.listen("5000", () => {
+app.listen("2000", () => {
   console.log("Backend is running.");
 });
